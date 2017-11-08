@@ -313,7 +313,8 @@ abstract class CalendarPagerAdapter<V extends CalendarPagerView> extends PagerAd
 
     @NonNull
     public List<CalendarDay> getSelectedDates() {
-        return Collections.unmodifiableList(selectedDates);
+        return selectedDates;
+        /*return Collections.unmodifiableList(selectedDates);*/
     }
 
     //Divyanshu

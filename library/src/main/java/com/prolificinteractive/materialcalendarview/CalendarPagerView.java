@@ -1,5 +1,6 @@
 package com.prolificinteractive.materialcalendarview;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -109,12 +110,21 @@ abstract class CalendarPagerView extends ViewGroup
             final DayView dayView = (DayView) v;
             if(mcv.getRangeDragStartView()==null) {
                 mcv.setRangeDragStartView(dayView);
-            }else if(dayView!=mcv.getRangeDragStartView()&&mcv.getRangeDragEndView()!=null){
+                mcv.onDateClicked(dayView);
+            }else if(mcv.getRangeDragEndView()==null){
+                mcv.setRangeDragEndView(dayView);
+                mcv.onDateClicked(dayView);
+            }else if(dayView.equals(mcv.getRangeDragStartView())||dayView.equals(mcv.getRangeDragEndView())){
                 mcv.clearSelection();
                 mcv.setRangeDragStartView(dayView);
+                mcv.setRangeDragEndView(null);
+                mcv.onDateClicked(dayView);
+            }else if(dayView!=mcv.getRangeDragStartView()&&dayView!=mcv.getRangeDragEndView()){
+                mcv.clearSelection();
+                mcv.setRangeDragStartView(dayView);
+                mcv.setRangeDragEndView(null);
+                mcv.onDateClicked(dayView);
             }
-            mcv.setRangeDragEndView(null);
-            mcv.onDateClicked(dayView);
         }
     }
 
@@ -246,8 +256,8 @@ abstract class CalendarPagerView extends ViewGroup
         for (DayView dayView : dayViews) {
             CalendarDay day = dayView.getDate();
             dayView.setChecked(dates!=null&&dates.contains(day));
-            dayView.setEndPoint(dayView.equals(mcv.getRangeDragStartView())||
-                    dayView.equals(mcv.getRangeDragEndView()));
+            dayView.setEndPoint(dayView==mcv.getRangeDragStartView()||
+                    dayView==mcv.getRangeDragEndView());
         }
         postInvalidate();
     }

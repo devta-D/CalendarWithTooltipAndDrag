@@ -25,6 +25,7 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView.ShowOth
 import com.prolificinteractive.materialcalendarview.Utilities.CalendarConstants;
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 
+import java.util.Calendar;
 import java.util.List;
 
 import static com.prolificinteractive.materialcalendarview.MaterialCalendarView.showDecoratedDisabled;

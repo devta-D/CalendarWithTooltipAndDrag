@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.prolificinteractive.materialcalendarview.MaterialCalendarView
+<com.prolificinteractive.materialcalendarview.MaterialCalendarView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/calendarView"
-    android:background="#FFF"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" />
+    android:background="#FFF"
+    android:paddingTop="16dp" />
